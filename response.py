@@ -54,7 +54,7 @@ def makeResponseForWhoAmI(req):
     data["name"] = information["name"]
     dob = information["dob"]
     year = str(dob).split("/")[2]
-    age = datetime.datetime.now().year - year
+    age = datetime.datetime.now().year - int(year)
     data["age"] = age
     data["dob"] = dob
     res = {}

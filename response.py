@@ -70,6 +70,7 @@ def makeResponseForSchedule(req):
     temp = gh.file_contents
     pid = req.get("pId")
     res = {}
+    out = False
     if(req.get("req_type") == "add_schedule"):
         temp[pid] = req.get("data")
         temp = json.dumps(temp, indent=4)

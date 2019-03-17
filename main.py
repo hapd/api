@@ -32,6 +32,10 @@ def checkLogin():
 def whoAmI():
     return processRequest('WhoAmI')
 
+@app.route('/schedule', methods=['POST'])
+def schedule():
+    return processRequest('Schedule')
+
 if __name__ == "__main__":
     port = int(os.getenv('PORT', 5000))
     print("Starting app on port %d" % port)

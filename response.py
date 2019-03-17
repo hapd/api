@@ -1,6 +1,7 @@
 from init_gh import GHFiles
 import json
 import datetime
+
 '''------------Add user--------------'''
 def makeResponseForAddUser(req):
     gh = GHFiles("users.json")
@@ -62,5 +63,35 @@ def makeResponseForWhoAmI(req):
     res["data"] = data
     res["source"] = "webhook-hapd-api"
     return res
+
+'''---------------Schedule---------------'''
+def makeResponseForSchedule(req):
+    gh = GHFiles('schedule.json')
+    temp = gh.file_contents
+    pid = req.get("pId")
+    res = {}
+    if(req.get("req_type") == "add_schedule"):
+        temp[pid] = req.get("data")
+        temp = json.dumps(temp, indent=4)
+        out = gh.update(temp, "schedule.json")
+    if(req.get("req_type") == "read_schedule"):
+        if(pid in temp):
+            schedule = temp[pid]
+            res["schedule"] = { "tasks":schedule, "found": "True"}
+        else:
+            res["schedule"] = { "found": "False" }
+    if(out == True):
+        res["fullfilmentText"] = ("%s successful")%str(req.get("req_type"))
+    else:
+        res["fullfilmentText"] = ("%s failed")%str(req.get("req_type"))
+    res["source"] = "webhook-hapd-api"
+    return res
+
+
+        
+
+
+
+
 
 

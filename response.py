@@ -78,6 +78,7 @@ def makeResponseForSchedule(req):
     if(req.get("req_type") == "read_schedule"):
         if(pid in temp):
             schedule = temp[pid]
+            print(temp[pid])
             res["schedule"] = { "tasks":schedule, "found": "True"}
         else:
             res["schedule"] = { "found": "False" }

@@ -92,7 +92,7 @@ def makeResponseForSchedule(req):
 
 '''---------------AuthenticateNurse---------------'''
 def makeResponseForAuthenticateNurse(req):
-    gh=GHFiles("Nurse.json")
+    gh=GHFiles("nurse.json")
     data=gh.file_content
     res={}
     if(req.get("id") in data):

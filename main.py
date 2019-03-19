@@ -36,6 +36,10 @@ def whoAmI():
 def schedule():
     return processRequest('Schedule')
 
+@app.route('/authenticateNurse', methods=['POST'])
+def authenticateNurse():
+    return processRequest('AuthenticateNurse')
+
 if __name__ == "__main__":
     port = int(os.getenv('PORT', 5000))
     print("Starting app on port %d" % port)

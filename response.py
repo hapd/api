@@ -90,9 +90,18 @@ def makeResponseForSchedule(req):
     return res
 
 
-        
-
-
+'''---------------AuthenticateNurse---------------'''
+def makeResponseForAuthenticateNurse(req):
+    gh=GHFiles("Nurse.json")
+    data=gh.file_content
+    res={}
+    if(req.get("id") in data):
+        if(req.get("password")==data.get(req.get("id")).get("password")):
+            res["fullfilmentText"]="Access Granted"
+        else:
+             res["fullfilmentText"]="Access Denied"
+    res["source"] = "webhook-hapd-api"
+    return res
 
 
 

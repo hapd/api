@@ -93,7 +93,7 @@ def makeResponseForSchedule(req):
 '''---------------AuthenticateNurse---------------'''
 def makeResponseForAuthenticateNurse(req):
     gh=GHFiles("nurse.json")
-    data=gh.file_content
+    data=gh.file_contents
     res={}
     if(req.get("id") in data):
         if(req.get("password")==data.get(req.get("id")).get("password")):

@@ -112,6 +112,8 @@ def makeResponseForNurse(req):
     res = {}
     if(req["req_type"] == "add_nurse"):
         currentNurseId = max(list(data.keys()))
+        print(req)
+        print(type(req["data"]["password"]))
         data[str(currentNurseId+1)] = {
             "name": str(req["data"]["name"]),
             "nop": "0",

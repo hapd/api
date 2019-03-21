@@ -112,14 +112,12 @@ def makeResponseForNurse(req):
     res = {}
     if(req["req_type"] == "add_nurse"):
         currentNurseId = max(list(data.keys()))
-        print(req)
-        print(type(req["data"]["password"]))
         data[str(currentNurseId+1)] = {
             "name": str(req["data"]["name"]),
             "nop": "0",
             "email": str(req["data"]["email"]),
-            "contact": str(req["data"]["contact"]),
-            "password": str(req["data"]["password"])
+            "password": str(req["data"]["password"]),
+            "contact": str(req["data"]["contact"])
         }
         temp = json.dumps(data, indent=4)
         out = gh.update(temp, "nurse.json")

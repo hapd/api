@@ -129,7 +129,7 @@ def makeResponseForNurse(req):
             "nurseId": nurseId,
             "name": data[nurseId]["name"],
             "nop": data[nurseId]["nop"],
-            "email": data[nurseId]["email"]
+            "email": data[nurseId]["email"],
             "contact": data[nurseId]["contact"]
         }
         res["fullfilmentText"] = "True"

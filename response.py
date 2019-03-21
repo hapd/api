@@ -125,6 +125,7 @@ def makeResponseForNurse(req):
             res["fullfilmentText"] = "True"
         else:
             res["fullfilmentText"] = "False"
+        res["nurseId"] = str(int(currentNurseId)+1)
     elif(req["req_type"] == "read_nurse"):
         nurseId = req["data"]["nurseId"]
         res["data"] = {

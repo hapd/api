@@ -103,6 +103,46 @@ def makeResponseForAuthenticateNurse(req):
     res["source"] = "webhook-hapd-api"
     return res
 
-
-
-
+'''---------------Nurse Information---------------'''
+def makeResponseForNurse(req):
+    gh = GHFiles("nurse.json")
+    data = gh.file_contents
+    res = {}
+    if(req["req_type"] == "add_nurse"):
+        currentNurseId = max(list(data.keys()))
+        data[str(currentNurseId+1)] = {
+            "name": req["data"]["name"],
+            "nop": "0",
+            "email": req["data"]["email"],
+            "contact": req["data"]["contact"],
+            "password": req["data"]["password"]
+        }
+        temp = json.dumps(data, indent=4)
+        out = gh.update(temp, "nurse.json")
+        if(out == True):
+            res["fullfilmentText"] = "True"
+        else:
+            res["fullfilmentText"] = "False"
+    elif(req["req_type"] == "read_nurse"):
+        nurseId = req["data"]["nurseId"]
+        res["data"] = {
+            "nurseId": nurseId,
+            "name": data[nurseId]["name"],
+            "nop": data[nurseId]["nop"],
+            "email": data[nurseId]["email"]
+            "contact": data[nurseId]["contact"]
+        }
+        res["fullfilmentText"] = "True"
+    elif(req["req_type"] == "increment_nop"):
+        nurseId = req["data"]["nurseId"]
+        nop = int(data[nurseId]["nop"]) + 1
+        data[nurseId]["nop"] = str(nop)
+        temp = json.dumps(data, indent=4)
+        out = gh.update(temp, "nurse.json")
+        if(out == True):
+            res["fullfilmentText"] = "True"
+        else:
+            res["fullfilmentText"] = "False"
+    res["source"] = "webhook-hapd-api"
+    return res
+        

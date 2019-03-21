@@ -118,7 +118,7 @@ def makeResponseForNurse(req):
         d["email"] = str(req.get("data").get("email"))
         d["password"] = str(req.get("data").get("password"))
         d["contact"] =  str(req.get("data").get("contact"))
-        data[str(currentNurseId+1)] = d
+        data[str(int(currentNurseId)+1)] = d
         temp = json.dumps(data, indent=4)
         out = gh.update(temp, "nurse.json")
         if(out == True):

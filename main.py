@@ -40,6 +40,10 @@ def schedule():
 def authenticateNurse():
     return processRequest('AuthenticateNurse')
 
+@app.route('/nurse', methods=['POST'])
+def nurse():
+    return processRequest('Nurse')
+
 if __name__ == "__main__":
     port = int(os.getenv('PORT', 5000))
     print("Starting app on port %d" % port)

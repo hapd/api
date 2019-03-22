@@ -116,6 +116,11 @@ def makeResponseForNurse(req):
         d = {}
         d["name"] = str(req.get("data").get("name"))
         d["nop"] = "0"
+        d["nos1"] = "0"
+        d["nos2"] = "0"
+        d["nos3"] = "0"
+        d["nos4"] = "0"
+        d["nos5"] = "0"
         d["email"] = str(req.get("data").get("email"))
         d["password"] = str(req.get("data").get("password"))
         d["contact"] =  str(req.get("data").get("contact"))

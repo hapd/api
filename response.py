@@ -15,6 +15,7 @@ def makeResponseForAddUser(req):
         "nurse": req.get('nurse'),
         "age": str(age),
         "dob": req.get('dob'),
+        "stage": req.get('stage'),
         "gender": req.get('gender'),
         "contact": req.get('contact'),
         "bloodgroup": req.get('bloodgroup'),

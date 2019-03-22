@@ -18,7 +18,8 @@ def makeResponseForAddUser(req):
         "gender": req.get('gender'),
         "contact": req.get('contact'),
         "bloodgroup": req.get('bloodgroup'),
-        "nurseId": req.get('nurseId')
+        "nurseId": req.get('nurseId'),
+        "image": req.get('image')
     }
     temp["currentPID"] = str(int(temp["currentPID"])+1)
     temp = json.dumps(temp, indent=4)

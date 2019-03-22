@@ -139,7 +139,12 @@ def makeResponseForNurse(req):
             "name": data[nurseId]["name"],
             "nop": data[nurseId]["nop"],
             "email": data[nurseId]["email"],
-            "contact": data[nurseId]["contact"]
+            "contact": data[nurseId]["contact"],
+            "nos1": data[nurseId]["nos1"],
+            "nos2": data[nurseId]["nos2"],
+            "nos3": data[nurseId]["nos3"],
+            "nos4": data[nurseId]["nos4"],
+            "nos5": data[nurseId]["nos5"]
         }
         res["fullfilmentText"] = "True"
     elif(req["req_type"] == "increment_nop"):
@@ -148,6 +153,18 @@ def makeResponseForNurse(req):
         data[nurseId]["nop"] = str(nop)
         temp = json.dumps(data, indent=4)
         out = gh.update(temp, "nurse.json")
+        if(out == True):
+            res["fullfilmentText"] = "True"
+        else:
+            res["fullfilmentText"] = "False"
+    elif(req["req_type"] == "increment_nos"):
+        nurseId = req["data"]["nurseId"]
+        stage = req["data"]["stage"]
+        s = "nos%s"%stage
+        nos = data[nurseId][s]
+        data[nurseId][s] = str(int(nos)+1)
+        temp = json.dumps(data, indent = 4)
+        gh.update(temp, "nurse.json")
         if(out == True):
             res["fullfilmentText"] = "True"
         else:

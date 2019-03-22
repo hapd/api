@@ -165,7 +165,7 @@ def makeResponseForNurse(req):
         nos = data[nurseId][s]
         data[nurseId][s] = str(int(nos)+1)
         temp = json.dumps(data, indent = 4)
-        gh.update(temp, "nurse.json")
+        out = gh.update(temp, "nurse.json")
         if(out == True):
             res["fullfilmentText"] = "True"
         else:

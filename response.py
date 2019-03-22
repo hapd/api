@@ -13,7 +13,7 @@ def makeResponseForAddUser(req):
         "name": req.get('name'),
         "pin": req.get('pin'),
         "nurse": req.get('nurse'),
-        "age": age,
+        "age": str(age),
         "dob": req.get('dob'),
         "gender": req.get('gender'),
         "contact": req.get('contact'),
